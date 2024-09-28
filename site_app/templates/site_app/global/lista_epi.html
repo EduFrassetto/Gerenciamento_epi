@@ -1,21 +1,29 @@
 {% extends "site_app/partial/index.html" %}
 
+
 {% block title %}Lista de EPI{% endblock title %}
+
 
 {% block content %}
 <div class="container justify-content-center mt-4">
     <form action="{% url 'lista_epi'%}" method="get">
         <div class="form-group">
-            <label class="form-label" for="nome_epi">Nome:</label>
-            <input class="form-control" type="text" name="nome_epi" id="nome_epi">
+            <input class="form-control" type="text" name="nome_epi" id="nome_epi" placeholder="EPI">
         </div>
     <input class="btn btn-primary my-3" type="submit" value="Pesquisar">
 </div>
 
+
 {% if lista_epi %}
 <div class="container mt-3">
-    <h2>Striped Rows</h2>
-    <p>The .table-striped class adds zebra-stripes to a table:</p>
+   
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>EPIs</h2>
+        <a href="{% url 'cadastro_epi' %}"
+           class="btn btn-primary px-4 py-2">Novo EPI</a>
+    </div>
+
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -25,7 +33,6 @@
                 <th>Modelo</th>
                 <th>Lote</th>
                 <th>Validade</th>
-                <th>Validade uso</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -37,8 +44,7 @@
                 <td>{{epi.marca}}</td>
                 <td>{{epi.modelo}}</td>
                 <td>{{epi.lote}}</td>
-                <td>{{epi.validade}}</td>
-                <td>{{epi.validade_uso}}</td>
+                <td>{{epi.validade|date:'d/m/Y'}}</td>
                 <td>{{epi.status}}</td>
                 <td>
                     <a class="btn btn-danger" href="/deletar_epi/{{epi.id}}" onclick="return confirmDelete('epi')">Deletar</a>
@@ -46,7 +52,6 @@
                 </td>
             </tr>
             {% endfor %}
-
         </tbody>
     </table>
 </div>

@@ -19,7 +19,6 @@ class Epi(models.Model):
     modelo = models.CharField(max_length=50)  # Corrigido o tamanho do campo modelo
     lote = models.CharField(max_length=15)
     validade = models.DateField()  # Alterado para DateField se refere a uma data de validade
-    validade_uso = models.CharField(max_length=10)
     status = models.CharField(max_length=10)
 
     def __str__(self):

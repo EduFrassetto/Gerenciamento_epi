@@ -1,0 +1,44 @@
+{% extends "site_app/partial/index.html" %}
+
+{% block title %}Atualizar EPI{% endblock title %}
+
+{% block content %}
+<p>Atualizando</p>
+{% if erro %}
+<div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Preencha todos os campos!</strong>
+</div>
+{% endif %}
+<form action={% url "atualizar_epi" epi.id %} method="post">
+    {% csrf_token %}
+    <div class="form-group my-2">
+        <label for="nome_epi">Nome</label>
+        <input class="form-control" type="text" name="nome_epi" placeholder="Nome" value="{{epi.nome_epi}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="marca">Marca</label>
+        <input class="form-control" type="text" name="marca" placeholder="Marca"
+            value="{{epi.marca}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="modelo">Modelo</label>
+        <input class="form-control" type="text" name="modelo" placeholder="Modelo" value="{{epi.modelo}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="lote">Lote</label>
+        <input class="form-control" type="text" name="lote" placeholder="Lote" value="{{epi.lote}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="validade">Validade</label>
+        <input class="form-control" type="date" name="validade" placeholder="Validade" value="{{epi.validade|date:'Y-m-d'}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="status">Status</label>
+        <input class="form-control" type="text" name="status" placeholder="Status" value="{{epi.status}}">
+    </div>
+    <div>
+    <input class="Btn btn-success" type="submit" value="enviar">
+    </div>
+</form>
+    {% endblock content %}

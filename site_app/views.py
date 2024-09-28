@@ -72,7 +72,6 @@ def cadastro_epi(request):
         modelo = request.POST.get('modelo')
         lote = request.POST.get('lote')
         validade = request.POST.get('validade')
-        validade_uso = request.POST.get('validade_uso')
         status = request.POST.get('status')
         if nome_epi:
             Epi.objects.create(
@@ -81,10 +80,9 @@ def cadastro_epi(request):
                 modelo=modelo,
                 lote=lote,
                 validade=validade,
-                validade_uso=validade_uso,
                 status=status
             )
-        print(nome_epi, marca, modelo, lote, validade, validade_uso, status)
+        print(nome_epi, marca, modelo, lote, validade, status)
     return render(request, 'site_app/global/cadastro_epi.html', {'ultimo_epi':nome_epi})
 
 def lista_epi(request):
@@ -93,3 +91,30 @@ def lista_epi(request):
     if nome_epi:
         values = Epi.objects.filter(nome_epi__icontains=nome_epi)
     return render(request, 'site_app/global/lista_epi.html', {"lista_epi":values})
+
+def deletar_epi(request, id):
+    epi = Epi.objects.get(id=id)
+    epi.delete()
+    return redirect('lista_epi')
+
+def atualizar_epi(request, id):
+    epi = Epi.objects.get(id=id)
+    if request.method == 'POST':
+        nome_epi = request.POST.get('nome_epi')
+        marca = request.POST.get('marca')
+        modelo = request.POST.get('modelo')
+        lote = request.POST.get('lote')
+        validade = request.POST.get('validade')
+        status = request.POST.get('status')
+        if nome_epi and marca and modelo and lote and validade and status:
+            epi.nome_epi = nome_epi
+            epi.marca = marca
+            epi.modelo = modelo
+            epi.lote = lote
+            epi.validade = validade
+            epi.status = status
+            epi.save()
+            return redirect('lista_epi')
+        else:
+            return render(request, 'site_app/global/atualizar_epi.html', {"epi":epi, "erro":True})
+    return render(request, 'site_app/global/atualizar_epi.html', {"epi":epi})

@@ -1,21 +1,28 @@
 {% extends "site_app/partial/index.html" %}
 
+
 {% block title %}Lista de colaboradores{% endblock title %}
+
 
 {% block content %}
 <div class="container justify-content-center mt-4">
     <form action="{% url 'lista_colaborador'%}" method="get">
         <div class="form-group">
-            <label class="form-label" for="nome">Nome:</label>
-            <input class="form-control" type="text" name="nome" id="nome">
+            <div><input class="form-control" type="text" name="nome" id="nome" placeholder="Nome"></div>
+            <div><input class="btn btn-primary my-3" type="submit" value="Pesquisar"></div>
         </div>
-    <input class="btn btn-primary my-3" type="submit" value="Pesquisar">
 </div>
+
 
 {% if lista_colaborador %}
 <div class="container mt-3">
-    <h2>Striped Rows</h2>
-    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Colaboradores</h2>
+        <a href="{% url 'cadastro_colaborador' %}"
+           class="btn btn-primary px-4 py-2">Novo colaborador</a>
+    </div>
+
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -42,6 +49,7 @@
                 </td>
             </tr>
             {% endfor %}
+
 
         </tbody>
     </table>
