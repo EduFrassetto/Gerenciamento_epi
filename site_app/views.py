@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from site_app.models import Colaborador
+from site_app.models import Epi
 data = [
     {'nome':'Eduardo'}
 ]
@@ -62,3 +63,33 @@ def atualizar_colaborador(request, id):
         else:
             return render(request, 'site_app/global/atualizar_colaborador.html', {"colaborador":colaborador, "erro":True})
     return render(request, 'site_app/global/atualizar_colaborador.html', {"colaborador":colaborador})
+
+def cadastro_epi(request):
+    nome_epi = None
+    if request.method == 'POST':
+        nome_epi = request.POST.get('nome_epi')
+        marca = request.POST.get('marca')
+        modelo = request.POST.get('modelo')
+        lote = request.POST.get('lote')
+        validade = request.POST.get('validade')
+        validade_uso = request.POST.get('validade_uso')
+        status = request.POST.get('status')
+        if nome_epi:
+            Epi.objects.create(
+                nome_epi=nome_epi,
+                marca=marca,
+                modelo=modelo,
+                lote=lote,
+                validade=validade,
+                validade_uso=validade_uso,
+                status=status
+            )
+        print(nome_epi, marca, modelo, lote, validade, validade_uso, status)
+    return render(request, 'site_app/global/cadastro_epi.html', {'ultimo_epi':nome_epi})
+
+def lista_epi(request):
+    values = Epi.objects.all()
+    nome_epi = request.GET.get('nome_epi')
+    if nome_epi:
+        values = Epi.objects.filter(nome_epi__icontains=nome_epi)
+    return render(request, 'site_app/global/lista_epi.html', {"lista_epi":values})

@@ -7,7 +7,7 @@
 {% if erro %}
 <div class="alert alert-danger alert-dismissible fade show">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Danger!</strong>
+    <strong>Preencha todos os campos!</strong>
 </div>
 {% endif %}
 <form action={% url "atualizar_colaborador" colaborador.id %} method="post">
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group my-2">
         <label for="data_nascimento">Data de nascimento</label>
-        <input class="form-control" type="text" name="data_nascimento" placeholder="Data de nascimento"
+        <input class="form-control" type="date" name="data_nascimento" placeholder="Data de nascimento"
             value="{{colaborador.data_nascimento}}">
     </div>
     <div class="form-group my-2">

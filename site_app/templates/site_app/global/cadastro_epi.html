@@ -1,0 +1,42 @@
+{% extends "site_app/partial/index.html" %}
+
+{% block title %}Cadastro EPI{% endblock title %}
+
+{% block content %}
+<p>Olá vamos iniciar</p>
+{% if ultimo_epi %}
+<p>O EPi cadastrado é: {{ultimo_epi}}</p>
+{% endif %}
+
+<form action={% url "cadastro_epi" %} method="post">
+    {% csrf_token %}
+    <div class="form-group my-2">
+        <label for="nome_epi">Nome</label>
+        <input class="form-control" type="text" name="nome_epi" placeholder="Nome">
+    </div>
+    <div class="form-group my-2">
+        <label for="marca">Marca</label>
+        <input class="form-control" type="text" name="marca" placeholder="Marca">
+    </div>
+    <div class="form-group my-2">
+        <label for="modelo">Modelo</label>
+        <input class="form-control" type="text" name="modelo" placeholder="Modelo">
+    </div>
+    <div class="form-group my-2">
+        <label for="lote">Lote</label>
+        <input class="form-control" type="text" name="lote" placeholder="Lote">
+    </div>
+    <div class="form-group my-2"></div>
+    <label for="validade">Validade</label>
+    <input class="form-control" type="text" name="validade" placeholder="Validade">
+    </div>
+    <div class="form-group my-2"></div>
+    <label for="validade_uso">Validade uso</label>
+    <input class="form-control" type="text" name="validade_uso" placeholder="Validade Uso">
+    </div>
+    <div class="form-group my-2"></div>
+    <label for="status">Status</label>
+    <input class="form-control" type="text" name="status" placeholder="Status">
+    </div>
+    <input class="Btn btn-success" type="submit" value="enviar">
+    {% endblock content %}
