@@ -1,0 +1,42 @@
+{% extends "site_app/partial/index.html" %}
+
+{% block title %}Atualizar Colaborador{% endblock title %}
+
+{% block content %}
+<p>Atualizando</p>
+{% if erro %}
+<div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Danger!</strong>
+</div>
+{% endif %}
+<form action={% url "atualizar_colaborador" colaborador.id %} method="post">
+    {% csrf_token %}
+    <div class="form-group my-2">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" name="nome" placeholder="Nome" value="{{colaborador.nome}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="data_nascimento">Data de nascimento</label>
+        <input class="form-control" type="text" name="data_nascimento" placeholder="Data de nascimento"
+            value="{{colaborador.data_nascimento}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="cpf">CPF</label>
+        <input class="form-control" type="text" name="cpf" placeholder="CPF" value="{{colaborador.cpf}}">
+    </div>
+    <div class="form-group my-2">
+        <label for="telefone">Telefone</label>
+        <input class="form-control" type="text" name="telefone" placeholder="Telefone" value="{{colaborador.telefone}}">
+    </div>
+    <div class="form-group my-2"></div>
+    <label for="cargo">Cargo</label>
+    <input class="form-control" type="text" name="cargo" placeholder="Cargo" value="{{colaborador.cargo}}">
+    </div>
+    <div class="form-group my-2"></div>
+    <label for="status">Status</label>
+    <input class="form-control" type="text" name="status" placeholder="Status" value="{{colaborador.status}}">
+    </div>
+    <input class="Btn btn-success" type="submit" value="enviar">
+
+    {% endblock content %}

@@ -1,0 +1,54 @@
+{% extends "site_app/partial/index.html" %}
+
+{% block title %}Lista de colaboradores{% endblock title %}
+
+{% block content %}
+<div class="container justify-content-center mt-4">
+    <form action="{% url 'lista_colaborador'%}" method="get">
+        <div class="form-group">
+            <label class="form-label" for="nome">Nome:</label>
+            <input class="form-control" type="text" nome="nome" id="nome">
+        </div>
+    <input class="btn btn-primary my-3" type="submit" value="Pesquisar">
+</div>
+
+{% if lista_colaborador %}
+<div class="container mt-3">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de nasc</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for colaborador in lista_colaborador %}
+            <tr>
+                <td>{{colaborador.id}}</td>
+                <td>{{colaborador.nome}}</td>
+                <td>{{colaborador.data_nascimento}}</td>
+                <td>{{colaborador.cpf}}</td>
+                <td>{{colaborador.telefone}}</td>
+                <td>{{colaborador.status}}</td>
+                <td>
+                    <a class="btn btn-danger" href="/deletar_colaborador/{{colaborador.id}}">Deletar</a>
+                    <a class="btn btn-primary" href="/atualizar_colaborador/{{colaborador.id}}">Atualizar</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="container mt-3">
+    <p class="text-center h2">Nenhum cadastro encontrado</p>
+</div>
+{% endif %}
+{% endblock content %}
