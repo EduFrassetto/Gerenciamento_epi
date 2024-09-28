@@ -24,3 +24,25 @@ class Epi(models.Model):
     def __str__(self):
         return (f"Epi: {self.nome_epi}, marca: {self.marca}, modelo: {self.modelo}, lote: {self.lote}, "
                 f"validade: {self.validade}, validade_uso: {self.validade_uso}, status: {self.status}")
+    
+class Emprestimo(models.Model):
+    STATUS_CHOICES = [
+        (1, 'Emprestado'),
+        (2, 'Em uso'),
+        (3, 'Fornecido'),
+        (4, 'Devolvido'),
+        (5, 'Danificado'),
+        (6, 'Perdido'),
+    ]
+    epi = models.ForeignKey(Epi, on_delete=models.CASCADE, related_name="equipamento")
+    colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE, related_name="colaborador")
+    data_emprestimo = models.DateTimeField(auto_now_add=True)
+    data_devolucao = models.DateField()
+    status = models.CharField(
+        max_length= 10,
+        choices=STATUS_CHOICES,
+        default=1)
+   
+    def __str__(self):
+        return (f"Equipamento: {self.epi}, Colaborador: {self.colaborador}, Data emprestimo: {self.data_emprestimo}, "
+        f"Data devolução: {self.data_devolucao}, Status: {self.status}")
