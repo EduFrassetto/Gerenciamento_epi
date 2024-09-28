@@ -3,10 +3,10 @@
 {% block title %}Cadastro EPI{% endblock title %}
 
 {% block content %}
-<p>Olá vamos iniciar</p>
-{% if ultimo_epi %}
-<p>O EPi cadastrado é: {{ultimo_epi}}</p>
-{% endif %}
+    <p>Olá vamos iniciar</p>
+        {% if ultimo_epi %}
+    <p>O EPi cadastrado é: {{ultimo_epi}}</p>
+        {% endif %}
 
 <form action={% url "cadastro_epi" %} method="post">
     {% csrf_token %}

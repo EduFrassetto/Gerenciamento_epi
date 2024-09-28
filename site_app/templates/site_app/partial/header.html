@@ -1,45 +1,47 @@
 {% load static %}
 
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cadastro_colaborador">Cadastro Colaborador</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/lista_colaborador">Lista de colaboradores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cadastro_epi">Cadastro de EPI</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/lista_epi">Lista de EPI</a>
-        </li>
-      </ul>
-      <div>
-        <div class="nav-item dropdown text-white d-flex gap-2 align-items-center">
-          <div><img src="{% static 'site_app/userlogo.png' %}" width="25" alt="user-logo"></div>
-          <div>
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Eduardo
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
-            </ul>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="javascript:void(0)"><img src="{% static 'site_app/userlogo.png' %}" width="25" alt="user-logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-brand" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastro_colaborador">Cadastro Colaborador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lista_colaborador">Lista de colaboradores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastro_epi">Cadastro de EPI</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lista_epi">Lista de EPI</a>
+          </li>
+        </ul>
+        <div>
+          <div class="nav-item dropdown text-white d-flex gap-2 align-items-center">
+            <div><img src="{% static 'site_app/userlogo.png' %}" width="25" alt="user-logo"></div>
+            <div>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Eduardo
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </nav>

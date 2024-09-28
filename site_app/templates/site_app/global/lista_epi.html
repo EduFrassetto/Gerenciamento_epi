@@ -41,8 +41,8 @@
                 <td>{{epi.validade_uso}}</td>
                 <td>{{epi.status}}</td>
                 <td>
-                    <a class="btn btn-danger" href="/deletar_colaborador/{{epi.id}}">Deletar</a>
-                    <a class="btn btn-primary" href="/atualizar_colaborador/{{epi.id}}">Atualizar</a>
+                    <a class="btn btn-danger" href="/deletar_epi/{{epi.id}}" onclick="return confirmDelete('epi')">Deletar</a>
+                    <a class="btn btn-primary" href="/atualizar_epi/{{epi.id}}">Atualizar</a>
                 </td>
             </tr>
             {% endfor %}

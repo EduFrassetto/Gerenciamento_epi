@@ -32,12 +32,12 @@
             <tr>
                 <td>{{colaborador.id}}</td>
                 <td>{{colaborador.nome}}</td>
-                <td>{{colaborador.data_nascimento}}</td>
+                <td>{{colaborador.data_nascimento|date:'d/m/Y'}}</td>
                 <td>{{colaborador.cpf}}</td>
                 <td>{{colaborador.telefone}}</td>
                 <td>{{colaborador.status}}</td>
                 <td>
-                    <a class="btn btn-danger" href="/deletar_colaborador/{{colaborador.id}}">Deletar</a>
+                    <a class="btn btn-danger" href="/deletar_colaborador/{{colaborador.id}}" onclick="return confirmDelete('colaborador')">Deletar</a>
                     <a class="btn btn-primary" href="/atualizar_colaborador/{{colaborador.id}}">Atualizar</a>
                 </td>
             </tr>
